@@ -1,16 +1,16 @@
 version: '3'
 services:
-backend:
-build: ./backend
-ports:
-- "5000:5000"
-environment:
-X402_API_KEY: "YOUR_X402_API_KEY"
-volumes:
-- ./backend:/app
-frontend:
-build: ./frontend
-ports:
-- "3000:3000"
-volumes:
-- ./frontend:/app
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      X402_API_KEY: "YOUR_X402_API_KEY"
+    volumes:
+      - ./backend:/app
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app

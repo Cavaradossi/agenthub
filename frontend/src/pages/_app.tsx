@@ -7,10 +7,16 @@ import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-const network = WalletAdapterNetwork.Devnet;
-const wallets = [new PhantomWalletAdapter()];
-return (
-<ConnectionProvider endpoint={}> <WalletProvider wallets={wallets} autoConnect> <WalletModalProvider>
-<Component {...pageProps} /> </WalletModalProvider> </WalletProvider> </ConnectionProvider>
-);
+    const network = WalletAdapterNetwork.Devnet;
+    const wallets = [new PhantomWalletAdapter()];
+
+    return (
+        <ConnectionProvider endpoint={`https://api.${network}.solana.com`}>
+            <WalletProvider wallets={wallets} autoConnect>
+                <WalletModalProvider>
+                    <Component {...pageProps} />
+                </WalletModalProvider>
+            </WalletProvider>
+        </ConnectionProvider>
+    );
 }
