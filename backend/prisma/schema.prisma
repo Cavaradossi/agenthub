@@ -1,0 +1,18 @@
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+provider = "sqlite"
+url      = "file:./dev.db"
+}
+
+model Task {
+id              Int     @id @default(autoincrement())
+user            String
+agent           String
+durationMinutes Float
+paymentTx       String
+success         Boolean
+createdAt       DateTime @default(now())
+}
